@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService} from '../_services/user-service.service';
 
@@ -35,12 +34,5 @@ onSubmit() {
     return;
  
   this.userService.register(this.signUpForm.value);
-  this.signUpForm.reset();
   }
-
-  resetForm(){
-    this.signUpForm.reset();
-    this.isSubmitted = false;
-  }
-
 } 

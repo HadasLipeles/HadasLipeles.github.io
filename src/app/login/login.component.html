@@ -3,41 +3,36 @@
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card bg-dark text-white" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
-  
               <div class="mb-md-5 mt-md-4">
-  
                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
-  
-             
-                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                         
-                        <!-- Email input -->
-                        <div class="form-outline form-white mb-4">
-                            <input type="email" name="email" formControlName="email" class="form-control form-control-lg" 
-                            placeholder="Email address"
-                            [ngClass]="{'is-invalid': isSubmitted && loginForm.controls['email'].errors}" />
-                            <div class="errorInfo" *ngIf="isSubmitted && loginForm.controls['email'].errors?.['required']"> Email is required</div>
-                            <div class="errorInfo" *ngIf="isSubmitted && loginForm.controls['email'].errors?.['pattern']"> Email is not valid</div>
-                        </div>
-                        
-                        <!-- Password input -->
-                        <div class="form-outline form-white mb-4">
-                            <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password"
-                            [ngClass]="{ 'is-invalid': isSubmitted && loginForm.controls['password'].errors }" />
-                            <div class="errorInfo" *ngIf="isSubmitted && loginForm.controls['password'].errors?.['minlength']">Password should contain at least 6 characters</div>
-                            <div class="errorInfo" *ngIf="isSubmitted && loginForm.controls['password'].errors?.['required']"> Password is required</div>
-                        </div>      
-                        
-                        
-                        <!-- Login button -->
-                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
-                    
-                        <!-- Register button --> 
-                        <div class="register-link text-center">
-                        <p>Don't have an account?<a routerLink="../register" class="btn btn-link">Register</a></p>
-                        </div>
-                    </form>
+                      <!-- Email input -->
+                      <div class="form-outline form-white mb-4">
+                          <input type="email" name="email" formControlName="email" class="form-control form-control-lg" 
+                          placeholder="Email address"
+                          [ngClass]="{'is-invalid': isSubmitted && loginForm.controls['email'].errors}" />
+                          <div class="errorInfo" *ngIf="isSubmitted && loginForm.controls['email'].errors?.['required']"> Email is required</div>
+                          <div class="errorInfo" *ngIf="isSubmitted && loginForm.controls['email'].errors?.['pattern']"> Email is not valid</div>
+                      </div>
+                      
+                      <!-- Password input -->
+                      <div class="form-outline form-white mb-4">
+                          <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password"
+                          [ngClass]="{ 'is-invalid': isSubmitted && loginForm.controls['password'].errors }" />
+                          <div class="errorInfo" *ngIf="isSubmitted && loginForm.controls['password'].errors?.['minlength']">Password should contain at least 6 characters</div>
+                          <div class="errorInfo" *ngIf="isSubmitted && loginForm.controls['password'].errors?.['required']"> Password is required</div>
+                      </div>      
+
+                      <!-- Login button -->
+                      <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                  
+                      <!-- Register button --> 
+                      <div class="register-link text-center">
+                      <p>Don't have an account?<a routerLink="../register" class="btn btn-link">Register</a></p>
+                      </div>
+                  </form>
             </div>
         </div>
     </div>

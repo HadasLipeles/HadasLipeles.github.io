@@ -61,8 +61,6 @@ export class UserService {
     }
     else{
       alert('ERROR: User Already Exist!')
-      this.router.navigate([this.router.url]).then(() => {
-        window.location.reload(); }); // refresh page
     }
   }
 
