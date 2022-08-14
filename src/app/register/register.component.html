@@ -1,0 +1,55 @@
+<div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+                <h2 class="fw-bold text-uppercase">sign up</h2>
+              <div class="mb-md-5 mt-md-4">
+                <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+
+                    <!-- First Name -->
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline form-white">
+                            <input type="text" class="form-control" placeholder="First Name" formControlName="firstName"
+                            [ngClass]="{'is-invalid': isSubmitted && signUpForm.controls['firstName'].errors}" />
+                            <div class="errorInfo" *ngIf="isSubmitted && signUpForm.controls['firstName'].errors?.['required']"> First name is not valid.</div>
+                            <div class="errorInfo" *ngIf="isSubmitted && signUpForm.controls['firstName'].errors?.['pattern']"> Last name is not valid.</div>
+                        </div>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline form-white">
+                            <input type="text"  class="form-control" placeholder="Last Name" formControlName="lastName"
+                            [ngClass]="{'is-invalid': isSubmitted && signUpForm.controls['lastName'].errors}" />
+                            <div class="errorInfo" *ngIf="isSubmitted && signUpForm.controls['lastName'].errors?.['required']"> Last name is required</div>
+                            <div class="errorInfo" *ngIf="isSubmitted && signUpForm.controls['lastName'].errors?.['pattern']"> Last name is not valid.</div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline form-white mb-4">
+                        <input type="email" name="email" formControlName="email" class="form-control" 
+                        placeholder="Email address"
+                        [ngClass]="{'is-invalid': isSubmitted && signUpForm.controls['email'].errors}" />
+                        <div class="errorInfo" *ngIf="isSubmitted && signUpForm.controls['email'].errors?.['required']"> Email is required</div>
+                        <div class="errorInfo" *ngIf="isSubmitted && signUpForm.controls['email'].errors?.['pattern']"> Email is not valid</div>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline form-white mb-4">
+                        <input type="password" formControlName="password" class="form-control" placeholder="Password"
+                        [ngClass]="{ 'is-invalid': isSubmitted && signUpForm.controls['password'].errors }" />
+                        <div class="errorInfo" *ngIf="isSubmitted && signUpForm.controls['password'].errors?.['minlength']">Password should contain at least 6 characters</div>
+                        <div class="errorInfo" *ngIf="isSubmitted && signUpForm.controls['password'].errors?.['required']"> Password is required</div>
+                    </div>      
+
+        <!-- Login button -->
+        <button class="btn-signup btn btn-outline-light btn-lg px-5" type="submit">Sign up</button>
+
+        </form>
+    </div>
+    </div>
+</div>
