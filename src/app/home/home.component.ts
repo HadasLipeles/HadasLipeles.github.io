@@ -9,12 +9,12 @@ import { User } from '../_models/user';
 
 export class HomeComponent {
 
-  user: User;
+  user: User|null;
   
   constructor(private userService: UserService) { }
   
   ngOnInit() {
     if (this.userService.userValue)
-    this.user = this.userService.userValue;
+    this.userService.getCurrentUser().subscribe((user)=> {this.user = user})
   }  
 }

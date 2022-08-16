@@ -4,14 +4,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { User } from '../_models/user';
 
-let usersList:User [] = []; 
 
 @Injectable({providedIn: 'root'})
 
 export class UserService {
 
+  private usersList:User [] = []; 
   private userSubject: BehaviorSubject<User | null>;
-  public user: Observable<User| null>;
+  private user: Observable<User| null>;
 
   constructor(private router: Router, private http: HttpClient) {
     this.userSubject = new BehaviorSubject<User|null>(null);
@@ -19,7 +19,7 @@ export class UserService {
   }
 
    login(email:string, password:string) {
-      const user = usersList.find(x => x.email === email && x.password === password);
+      const user = this.usersList.find(x => x.email === email && x.password === password);
      
         if (user) {
           this.updateCurrentUser(user);
@@ -37,16 +37,16 @@ export class UserService {
     return this.userSubject.value;
   }
 
-  updateCurrentUser(user:User|null){
+  private updateCurrentUser(user:User|null){
     this.userSubject.next(user);
   }
 
   getAllUser() {
-    return usersList;
+    return this.usersList;
   }
 
   userAlreadyExist(email:string){
-    const user = usersList.find(x => x.email === email);
+    const user = this.usersList.find(x => x.email === email);
     if (user) return true;
     return false;
   }
@@ -55,7 +55,7 @@ export class UserService {
     const isUserAlreadyExist: boolean = this.userAlreadyExist(user.email);
     
     if(!isUserAlreadyExist){
-      usersList.push(user);
+      this.usersList.push(user);
       alert('Registration completed successfully!')
       this.router.navigate(['/login']);
     }
